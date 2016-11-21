@@ -7,14 +7,26 @@ RDF_IO has initial data that loads up common W3C namespaces and prefixes ready f
 
 ## installation
 
-get a working copy with
+Go to your master django project directory. E.g. if installing with geonode:
+```
+cd /home/geonode/geonode
+```
+
+Get a working copy of rdf-io:
 ```
 git clone https://github.com/rob-metalinkage/django-rdf-io
-pip install -e (where you put it)
+sudo -H pip install -e django-rdf-io
 ```
-in your master django project:
+In your master django project directory:
 * add 'rdf_io' to the INSTALLED_APPS  in settings.py
-* add    ` url(r"^rdf_io/", include('rdf_io.urls'))`  to urls.py
+* add    ` url(r"^rdf_io/", include('rdf_io.urls'))` to urls.py, below the line:
+```
+	urlpatterns = patterns('',
+```
+Restart Apache:
+```
+sudo service apache2 restart
+```
 
 ## Usage
 	1) Define mappings for your target models using the admin interface $SERVER/admin/rdf_io
